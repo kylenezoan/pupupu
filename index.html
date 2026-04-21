@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>實習成果發表 - 裕祥</title>
+  <style>
+    :root {
+      --allianz-blue: #003366;
+      --allianz-light-blue: #0055a5;
+      --bg-gray: #f5f5f5;
+      --text-dark: #333;
+    }
+    body { font-family: "Microsoft JhengHei", Arial, sans-serif; margin:0; padding:0; background: var(--bg-gray); color: var(--text-dark); }
+    
+    .nav-container { display: flex; min-height: 100vh; }
+
+    /* 選單切換按鈕 */
+    .menu-toggle {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      z-index: 10;
+      background: var(--allianz-light-blue);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    /* 側邊導覽列 */
+    .sidebar {
+      width: 260px;
+      background: var(--allianz-blue);
+      color: white;
+      padding: 40px 20px;
+      flex-shrink: 0;
+      border-right: 6px solid var(--allianz-light-blue);
+      box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      max-height: 2000px;
+      transition: width 0.4s ease, max-height 0.4s ease, padding 0.4s ease, border-width 0.4s ease, opacity 0.4s ease;
+    }
+    .sidebar.hidden {
+      width: 0;
+      max-height: 0;
+      padding: 0;
+      border-width: 0;
+      opacity: 0;
+    }
+    .sidebar h2 { font-size: 22px; margin-bottom: 35px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 15px; letter-spacing: 1px; }
+    .sidebar ul { list-style: none; padding: 0; }
+    .sidebar li { margin-bottom: 18px; }
+    .sidebar a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 17px; transition: 0.3s; display: block; padding: 8px 0; }
+    .sidebar a:hover, .sidebar a.active { color: #fff; font-weight: bold; padding-left: 10px; border-left: 4px solid #fff; }
+
+    /* 右側主內容區 */
+    .main-content { flex-grow: 1; display: flex; flex-direction: column; }
+    
+    .banner { background: var(--allianz-blue); color:white; padding:70px 20px; text-align:center; border-bottom: 5px solid var(--allianz-light-blue); }
+    .banner h1 { margin:0; font-size:38px; letter-spacing: 3px; }
+    .banner p { font-size:19px; margin-top:15px; opacity: 0.85; }
+
+    .content-box { 
+      background:white; 
+      padding:50px; 
+      max-width:750px; 
+      margin: -40px auto 50px auto; 
+      box-shadow:0 15px 35px rgba(0,0,0,0.1); 
+      border-radius: 15px; 
+      flex-grow: 1;
+      line-height: 1.8;
+    }
+    
+    .section-title { color: var(--allianz-blue); border-left: 6px solid var(--allianz-light-blue); padding-left: 20px; margin-bottom: 25px; font-size: 26px; font-weight: bold; }
+    
+    .highlight-card {
+      background: #eef4f9;
+      padding: 25px;
+      border-radius: 10px;
+      margin-top: 30px;
+      border-left: 5px solid var(--allianz-light-blue);
+    }
+
+    /* 內容圖片 */
+    .content-image {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 25px auto;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+
+    footer { background: var(--allianz-blue); color:rgba(255,255,255,0.6); text-align:center; padding:30px; font-size:14px; }
+
+    @media (max-width: 850px) {
+      .nav-container { flex-direction: column; }
+      .sidebar { width: 100%; border-right: none; border-bottom: 6px solid var(--allianz-light-blue); padding: 25px; box-sizing: border-box; }
+      .sidebar ul { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+      .sidebar li { margin-bottom: 0; }
+      .content-box { margin: 20px; padding: 30px; }
+      .banner h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 選單切換按鈕 -->
+  <button class="menu-toggle" onclick="toggleMenu()">&#9776; 選單</button>
+
+  <div class="nav-container">
+    <!-- 左側導覽列 -->
+    <nav class="sidebar" id="mySidebar">
+      <h2>實習成果導覽</h2>
+      <ul>
+        <li><a href="#" class="active" onclick="setActive(this); showSection('section-home')">首頁導覽</a></li>
+        <li><a href="#" onclick="setActive(this); showSection('section-company')">公司介紹</a></li>
+        <li><a href="#" onclick="setActive(this); showSection('section-about')">自我介紹</a></li>
+        <li><a href="#" onclick="setActive(this); showSection('section-content')">裕祥-實習內容</a></li>
+        <li><a href="#" onclick="setActive(this); showSection('section-reflection')">實習心得</a></li>
+      </ul>
+    </nav>
+
+    <!-- 右側主內容 -->
+    <div class="main-content">
+      <div class="banner">
+        <h1>安聯人壽保險股份有限公司</h1>
+        <p>2026 實習成果發表會</p>
+      </div>
+
+      <!-- 首頁 -->
+      <div class="content-box section" id="section-home">
+        <div class="section-title">歡迎來到實習成果發表</div>
+        <p>你好，我是<strong>李裕祥</strong>。在安聯人壽<strong>家鼎通訊處</strong>實習期間，我致力於深耕壽險產業的專業知識，並學習如何為客戶提供最切實的保障規劃。</p>
+
+        <div class="highlight-card">
+          <p style="margin:0;"><strong>當前目標：</strong> 透過數據洞察與需求分析，縮短民眾的「保障缺口」，落實保險真正的核心價值。</p>
+        </div>
+
+        <p style="margin-top: 30px; color: #666;">請透過左側選單（行動裝置請見上方選單）切換查看各個實習階段的詳細紀錄。</p>
+      </div>
+
+      <!-- 公司介紹 -->
+      <div class="content-box section" id="section-company" style="display:none;">
+        <div class="section-title">公司介紹</div>
+        <img src="allianz-arena.jpg" alt="安聯球場" class="content-image">
+        <p>安聯集團是源自德國的全球金融龍頭，業務核心由保險與資產管理雙軌驅動。在台灣，其影響力尤以<strong>「安聯人壽」</strong>與<strong>「安聯投信」</strong>最為顯著。</p>
+
+        <div class="highlight-card">
+          <p style="margin:0;">安聯人壽長期穩居外資壽險第一，核心優勢在於投資型保險，利用數位工具提供精準的退休規劃。</p>
+        </div>
+      </div>
+
+      <!-- 自我介紹 -->
+      <div class="content-box section" id="section-about" style="display:none;">
+        <div class="section-title">自我介紹</div>
+        <img src="li-yuxiang.jpg" alt="李裕祥" class="content-image" style="max-width: 300px;">
+        <p><strong>實習學生：</strong>李裕祥</p>
+        <p><strong>實習單位：</strong>家鼎通訊處　Allianz</p>
+        <p><strong>實習職位：</strong>專業壽險顧問</p>
+        <p><strong>實習時間：</strong>2025/07/07 ~ 2026/06/30</p>
+      </div>
+
+      <!-- 裕祥-實習內容 -->
+      <div class="content-box section" id="section-content" style="display:none;">
+        <div class="section-title">裕祥-實習內容</div>
+        <p>此區塊尚在整理中，將陸續補上實習期間的專案紀錄與學習歷程。</p>
+      </div>
+
+      <!-- 實習心得 -->
+      <div class="content-box section" id="section-reflection" style="display:none;">
+        <div class="section-title">實習心得</div>
+        <h3 style="color: var(--allianz-light-blue);">實習動機</h3>
+        <p>最初接觸保險產業，是源於一組令我震撼的數據：民國97年壽險投保率雖達 203%，平均年繳保費達 8.8 萬元，但保障額度卻僅約 60.9 萬。這巨大的落差讓我開始反思產業現狀，也成為我加入安聯人壽家鼎通訊處的契機。</p>
+        <p>作為壽險顧問，我致力於透過深度對談挖掘客戶的真實需求。即便當時缺乏經驗，公司完善的培訓資源與對年輕世代的重視，讓我能快速學習並解決問題。因此，我決定畢業後即全力投入安聯人壽，將保險作為終身事業發展。</p>
+
+        <div class="highlight-card">
+          <p style="margin:0;">在這一年間我也學到很多不同的知識和方法，解決了無數次問題，未來也樂意幫助更多學弟妹來到安聯實習。</p>
+        </div>
+      </div>
+
+      <footer>
+        <p>&copy; 2026 安聯人壽保險股份有限公司 | 裕祥 實習成果發表</p>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    // 顯示/隱藏側邊選單
+    function toggleMenu() {
+      var sidebar = document.getElementById("mySidebar");
+      if (sidebar.className.indexOf("hidden") === -1) {
+        sidebar.className += " hidden";
+      } else {
+        sidebar.className = sidebar.className.replace(" hidden", "");
+      }
+    }
+
+    // 點選連結時標示為目前選項
+    function setActive(link) {
+      var links = document.querySelectorAll(".sidebar a");
+      for (var i = 0; i < links.length; i++) {
+        links[i].className = links[i].className.replace("active", "");
+      }
+      link.className = "active";
+    }
+
+    // 切換顯示的內容區塊
+    function showSection(id) {
+      var sections = document.querySelectorAll(".section");
+      for (var i = 0; i < sections.length; i++) {
+        sections[i].style.display = "none";
+      }
+      document.getElementById(id).style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
